@@ -1,6 +1,6 @@
 import '../css/main.css';
 import { initI18n } from './i18n.js';
-import { initStickyHeader, initScrollSpy } from './navigation.js';
+import { initStickyHeader, initMobileMenu, initScrollSpy } from './navigation.js';
 import { initReveal } from './animations.js';
 
 function initProjectDialog() {
@@ -33,6 +33,7 @@ function initYear() {
 window.__appReady = true;
 initI18n();
 initStickyHeader();
+initMobileMenu();
 initScrollSpy();
 initReveal();
 initProjectDialog();

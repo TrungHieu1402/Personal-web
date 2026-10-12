@@ -101,6 +101,7 @@ function apply(lang) {
   document.querySelectorAll('[data-lang]').forEach((btn) => {
     btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
   });
+  document.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
 }
 
 function readStored() {

@@ -1,38 +1,56 @@
-/* Scroll reveal — chỉ ẩn nội dung khi JS đã chạy (html.js), để không mất nội dung nếu JS lỗi */
-.js [data-reveal] {
+/*
+ * Entrance & scroll reveal.
+ * Dùng @keyframes trên thuộc tính `translate` (không phải `transform`) và fill-mode `backwards`,
+ * để không đè lên transition hover/press của .card và .btn (vốn dùng `transform`).
+ * Nội dung chỉ bị ẩn khi html có class .js — JS lỗi thì vẫn thấy toàn bộ.
+ */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    translate: 0 var(--reveal-distance);
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.js [data-reveal]:not(.is-visible) {
   opacity: 0;
-  transform: translate3d(0, 16px, 0);
-  transition:
-    opacity var(--duration-enter) var(--ease-out-expo),
-    transform var(--duration-enter) var(--ease-out-expo);
-  transition-delay: calc(var(--reveal-i, 0) * 70ms);
+  translate: 0 var(--reveal-distance);
 }
 
 .js [data-reveal].is-visible {
-  opacity: 1;
-  transform: none;
+  animation: rise-in var(--duration-reveal) var(--ease-out-expo) backwards;
+  animation-delay: calc(var(--reveal-i, 0) * var(--stagger));
 }
 
-/* Hero vào trang lần đầu */
-@keyframes hero-in {
-  from { opacity: 0; transform: translate3d(0, 20px, 0); }
-  to   { opacity: 1; transform: none; }
-}
-
+/* Hero vào trang lần đầu: các khối lần lượt hiện, cách nhau 1 stagger */
 .js .hero-enter > * {
-  animation: hero-in var(--duration-enter) var(--ease-out-expo) both;
+  animation: rise-in var(--duration-reveal) var(--ease-out-expo) backwards;
 }
-.js .hero-enter > :nth-child(2) { animation-delay: 60ms; }
-.js .hero-enter > :nth-child(3) { animation-delay: 120ms; }
-.js .hero-enter > :nth-child(4) { animation-delay: 180ms; }
-.js .hero-enter > :nth-child(5) { animation-delay: 240ms; }
+.js .hero-enter > :nth-child(2) { animation-delay: calc(1 * var(--stagger)); }
+.js .hero-enter > :nth-child(3) { animation-delay: calc(2 * var(--stagger)); }
+.js .hero-enter > :nth-child(4) { animation-delay: calc(3 * var(--stagger)); }
+.js .hero-enter > :nth-child(5) { animation-delay: calc(4 * var(--stagger)); }
+
+.js .hero-media-enter {
+  animation: fade-in var(--duration-reveal) var(--ease-out-soft) 120ms backwards;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
     scroll-behavior: auto !important;
   }
-  .js [data-reveal] { opacity: 1; transform: none; }
+  .js [data-reveal]:not(.is-visible) { opacity: 1; translate: none; }
 }

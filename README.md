@@ -91,6 +91,9 @@ server {
 
 - **Font:** frame desktop dùng Inter; frame mobile dùng Roboto/DM Sans (từ một thư viện component khác). Để nhất quán, toàn site dùng Inter, áp dụng kích thước/line-height của từng frame.
 - **Breakpoint:** < 768 theo frame mobile; 768–1023 bản xếp chồng mở rộng (suy luận, Figma không có tablet); ≥ 1024 bố cục 2 cột (intro 360px | nội dung) như desktop; hero chuyển sang 2 cột từ 1280px để cột ảnh không bị hẹp.
+- **Navigation:** một `<nav>` duy nhất. Từ **720px** (`--breakpoint-nav`) nằm ngang; nhỏ hơn thì thành panel thả xuống mở bằng nút ☰ (aria-expanded/aria-controls, Esc, bấm vùng tối, chọn link đều đóng). 720px chọn từ đo thực tế: logo + 4 link + nút VN/EN cần ~570px (cả bản EN), chừa ≥150px để tablet nhỏ không chật. Thứ tự link = thứ tự section: Kỹ năng → Dự án → Kinh nghiệm → Liên hệ (header và footer).
+- **Typography:** thang chữ trong `tokens.css` dùng `clamp()`, mỗi cấp một class (`text-display`, `text-heading`, `text-title`, `text-lead`, `text-body`, `text-label`, `text-meta`). Chỉnh một token là đổi toàn site.
+- **Motion:** token thời lượng trong `:root` (`--duration-press` 120ms → `--duration-media` 900ms, `--stagger` 80ms) và easing trong `@theme`. Reveal/entrance dùng `@keyframes` trên thuộc tính `translate` để không xung đột với `transform` của hover/press.
 - **Icon:** tên layer trong Figma trùng icon Lucide (`code`, `layout`, `pen-tool`, `book-open`, `arrow-right`), nên dùng SVG từ `lucide-static` 1.55.0 (ISC). Icon mail/phone là Lucide `mail`/`phone`, gần giống vector trong Figma.
 - **Nút "Xem dự án" của Dự án 01:** chưa có trang chi tiết, nên mở một hộp thoại xem ảnh + mô tả. Khi có trang chi tiết, đổi thành link.
 - **Số điện thoại:** hiển thị đúng như Figma `+ 828127778`; link `tel:+84828127778` là giả định (mã VN). Cần xác nhận.
