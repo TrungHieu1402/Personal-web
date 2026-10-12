@@ -1,0 +1,38 @@
+/* Scroll reveal — chỉ ẩn nội dung khi JS đã chạy (html.js), để không mất nội dung nếu JS lỗi */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  transition:
+    opacity var(--duration-enter) var(--ease-out-expo),
+    transform var(--duration-enter) var(--ease-out-expo);
+  transition-delay: calc(var(--reveal-i, 0) * 70ms);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero vào trang lần đầu */
+@keyframes hero-in {
+  from { opacity: 0; transform: translate3d(0, 20px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+.js .hero-enter > * {
+  animation: hero-in var(--duration-enter) var(--ease-out-expo) both;
+}
+.js .hero-enter > :nth-child(2) { animation-delay: 60ms; }
+.js .hero-enter > :nth-child(3) { animation-delay: 120ms; }
+.js .hero-enter > :nth-child(4) { animation-delay: 180ms; }
+.js .hero-enter > :nth-child(5) { animation-delay: 240ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js [data-reveal] { opacity: 1; transform: none; }
+}
