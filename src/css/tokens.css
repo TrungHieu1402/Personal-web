@@ -15,8 +15,8 @@
   --color-surface: #161513;    /* card, tag, nền section Liên hệ */
   --color-line: #2a2a2e;       /* viền card / tag */
   --color-divider: #1f1f22;    /* viền header / footer */
-  --color-gold: #d6a64d;       /* accent: nhãn section, CTA, ngày tháng */
-  --color-gold-strong: #e3b862;/* hover CTA (suy luận, sáng hơn ~6%) */
+  --color-gold: #d6a64d;       /* vàng thương hiệu: nhãn section, CTA, ngày tháng */
+  --color-gold-strong: #e3b862;/* vàng sáng hơn: hover CTA, điểm nhấn gradient chữ */
   --color-muted: #a3a3a3;      /* body phụ */
   --color-snow: #ffffff;
 
@@ -32,6 +32,13 @@
    * Giảm so với bản Figma desktop: H1 48→42, H2 28→26, title 20→18, lead 18→17,
    * body 16→15, nav/nút 18|16→15, tag/meta 16→14. Mobile giữ gần Figma, riêng H1 40→32.
    */
+  /* Tiêu đề hero theo mockup mới — lớn hơn display của các section */
+  --text-hero: clamp(2.125rem, 0.9rem + 2.9vw, 3.5rem);           /* 34 → 56 */
+  --text-hero--line-height: 1.08;
+  --text-hero--letter-spacing: -0.03em;
+  --text-hero-lead: clamp(1rem, 0.92rem + 0.3vw, 1.1875rem);      /* 16 → 19 */
+  --text-hero-lead--line-height: 1.6;
+
   --text-display: clamp(2rem, 1.6rem + 1.5vw, 2.625rem);        /* 32 → 42 */
   --text-display--line-height: 1.15;
   --text-display--letter-spacing: -0.025em;
@@ -57,7 +64,7 @@
   --ease-in-soft: cubic-bezier(0.4, 0, 1, 1);      /* menu đóng: nhanh, không lơ lửng */
 
   /* Layout */
-  --container-page: 1440px;
+  --container-page: 1920px; /* desktop: lề tính theo --u (80u), không chặn ở 1440 như trước */
 }
 
 /* Motion tokens — dùng trong CSS tùy biến (không sinh utility) */
@@ -72,11 +79,18 @@
   --stagger: 80ms;
   --reveal-distance: 18px;
 
+  /* 1u = 1px của khung mockup hero rộng 1672px. Desktop (≥1024px) mọi số đo hero/header nhân với --u
+     để giữ đúng tỷ lệ mockup ở mọi bề rộng; dưới 1024px dùng bố cục responsive riêng. */
+  --u: 1px;
+
   /* Chiều cao header thực, JS cập nhật bằng ResizeObserver; giá trị dưới là dự phòng */
   --header-h: 73px;
   color-scheme: dark;
 }
 
 @media (min-width: 64rem) {
-  :root { --header-h: 109px; }
+  :root {
+    --header-h: 109px;
+    --u: calc(min(100vw, 1920px) / 1672);
+  }
 }

@@ -47,7 +47,7 @@ src/assets/images/       # ảnh — HIỆN LÀ PLACEHOLDER, xem bên dưới
 | File | Layer Figma | Kích thước gợi ý (2x) |
 |---|---|---|
 | `logo-turtle.png` | rua-tia-chop-khong-nen 1 | 180 × 120, nền trong suốt |
-| `hero-portrait.jpg` | hero-image / Portrait | 1552 × 840 |
+| `hero-portrait.webp` (+ `-800.webp`) | hero-image / Portrait | 1254 × 1254, nền trong suốt |
 | `project-01.jpg` | featured-image | 1968 × 840 |
 | `project-02.jpg` | project-row › Frame | 1904 × 392 |
 | `vnnic-logo.png` | Rectangle (timeline) | 144 × 144 |
@@ -93,6 +93,9 @@ server {
 - **Breakpoint:** < 768 theo frame mobile; 768–1023 bản xếp chồng mở rộng (suy luận, Figma không có tablet); ≥ 1024 bố cục 2 cột (intro 360px | nội dung) như desktop; hero chuyển sang 2 cột từ 1280px để cột ảnh không bị hẹp.
 - **Navigation:** một `<nav>` duy nhất. Từ **720px** (`--breakpoint-nav`) nằm ngang; nhỏ hơn thì thành panel thả xuống mở bằng nút ☰ (aria-expanded/aria-controls, Esc, bấm vùng tối, chọn link đều đóng). 720px chọn từ đo thực tế: logo + 4 link + nút VN/EN cần ~570px (cả bản EN), chừa ≥150px để tablet nhỏ không chật. Thứ tự link = thứ tự section: Kỹ năng → Dự án → Kinh nghiệm → Liên hệ (header và footer).
 - **Typography:** thang chữ trong `tokens.css` dùng `clamp()`, mỗi cấp một class (`text-display`, `text-heading`, `text-title`, `text-lead`, `text-body`, `text-label`, `text-meta`). Chỉnh một token là đổi toàn site.
+- **Hero (desktop ≥1024px)** dựng theo mockup 1672×941: mọi số đo dùng đơn vị `--u` (= 1/1672 bề rộng màn hình, tối đa ở 1920px) nên giữ đúng tỷ lệ ở mọi màn desktop. Header trong suốt ở đầu trang (ảnh lộ phía sau), nền đặc khi cuộn.
+- **Ảnh chân dung** `src/assets/images/hero-portrait(.webp|-800.webp)`: đã tách nền (WebP trong suốt) và khử ánh cam ở nền/viền tóc; da mặt giữ nguyên. Ảnh gốc và mặt nạ tách nền lưu ở `design/` (không đưa vào bản build).
+- **Nút lên đầu trang** (`src/js/back-to-top.js`): hiện sau khi cuộn 3/4 màn hình (`SHOW_AFTER`), vòng vàng = tiến độ đọc, tự né nội dung footer, tôn trọng reduced-motion.
 - **Motion:** token thời lượng trong `:root` (`--duration-press` 120ms → `--duration-media` 900ms, `--stagger` 80ms) và easing trong `@theme`. Reveal/entrance dùng `@keyframes` trên thuộc tính `translate` để không xung đột với `transform` của hover/press.
 - **Icon:** tên layer trong Figma trùng icon Lucide (`code`, `layout`, `pen-tool`, `book-open`, `arrow-right`), nên dùng SVG từ `lucide-static` 1.55.0 (ISC). Icon mail/phone là Lucide `mail`/`phone`, gần giống vector trong Figma.
 - **Nút "Xem dự án" của Dự án 01:** chưa có trang chi tiết, nên mở một hộp thoại xem ảnh + mô tả. Khi có trang chi tiết, đổi thành link.
