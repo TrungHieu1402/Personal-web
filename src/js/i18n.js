@@ -2,6 +2,7 @@
 // bản tiếng Anh được thay vào khi người dùng bấm "EN" và được ghi nhớ trong trình duyệt.
 
 const EN = {
+  // Chung / trợ năng
   skip: 'Skip to content',
   homeLabel: 'Back to top',
   logoAlt: 'Black turtle logo',
@@ -9,15 +10,19 @@ const EN = {
   langLabel: 'Language',
   footerNavLabel: 'Footer links',
   close: 'Close',
-  'nav.projects': 'Projects',
+  toTop: 'Scroll to top',
+
+  // Điều hướng
   'nav.skills': 'Skills',
+  'nav.projects': 'Projects',
   'nav.experience': 'Experience',
   'nav.contact': 'Contact',
+
+  // Hero
   'hero.meta': 'Code • Design • Share',
-  'hero.title1': 'Building digital experiences.',
-  'hero.title2': 'Sharing what I learn.',
-  'hero.desc':
-    'I love programming and sharing what I know about web development. Explore my projects, tutorials and the lessons I picked up along the way.',
+  'hero.title1': "Hi, I'm Hiếu!",
+  'hero.title2': 'Software engineer & AI',
+  'hero.desc': 'I like turning lines of code into something useful — and letting AI help me get there a little faster. :)',
   'hero.ctaProjects': 'View projects',
   'hero.ctaContact': 'Contact',
   'hero.tagsLabel': 'Focus areas',
@@ -29,31 +34,45 @@ const EN = {
   'hero.m2k': 'Design',
   'hero.m3k': 'Sharing',
   'hero.m3v': 'Tutorials & web development',
-  'skills.title': 'Bridging code and design.',
-  'skills.desc': 'From building interfaces to visual design and sharing web knowledge.',
+
+  // Kỹ năng
+  'skills.title': 'Code with logic, design with inspiration.',
+  'skills.desc': "The skill tree I've unlocked after plenty of grinding",
   'skills.s1': 'Building user interfaces, polishing the experience and handing over clean code.',
   'skills.s2': 'From idea to prototype, focused on user flow and a lean feel.',
   'skills.s3': 'Visuals, icons and visual systems supporting projects and shared content.',
-  'skills.s4': 'Articles, tutorials and project stories told briefly and clearly.',
-  'projects.title': 'A corner of my work.',
-  'projects.desc': 'Available project images. Names, roles and detailed descriptions are coming soon.',
+  'skills.s4': 'Designing, building and optimizing CMS platforms.',
+  'skills.s5': 'Applying AI to web development',
+
+  // Dự án
+  'projects.title': 'Code written, projects built.',
+  'projects.desc': "I'm still updating this section...",
   'projects.featured': 'Featured project',
   'projects.p1': 'Project 01',
   'projects.p2': 'Project 02',
   'projects.p1Alt': 'Illustration for Project 01',
   'projects.p2Alt': 'Illustration for Project 02',
   'projects.tbd': 'Project details are being updated: name, role and scope of work.',
-  'exp.title': 'My working journey.',
-  'exp.desc': 'Roles in interface development and graphic design.',
-  'exp.r1': 'Front-end developer & Graphic designer at VNNIC',
-  'exp.d1': 'Front-end development and graphic design at VNNIC. Detailed description coming soon.',
-  'exp.r2': 'Freelance Front-end developer & Graphic designer',
-  'exp.d2': 'Freelance front-end development and graphic design. Detailed description coming soon.',
-  'contact.title': "Let's build something new.",
-  'contact.desc': 'Have an idea or a project to discuss? Get in touch.',
+
+  // Kinh nghiệm
+  'exp.title': 'From lines of code to ideas that take shape.',
+  'exp.desc':
+    "A journey through front-end, graphic design and CMS. Some days I'm battling CSS, some days I'm puzzling over layouts, and some days I'm building entire systems so everything runs smoothly.",
+  'exp.vnnicAlt': 'VNNIC logo',
+  'exp.present': 'Present',
+  'exp.r1': 'Front-end Developer, Graphic Designer & CMS Developer at VNNIC',
+  'exp.d1': 'Developed web interfaces, created graphic designs and built a content management system (CMS) platform at VNNIC.',
+  'exp.r2': 'Freelance Front-end Developer, Graphic Designer & CMS Developer',
+  'exp.d2': 'Developing user interfaces, creating graphic designs and building CMS platforms for client projects.',
+
+  // Liên hệ
+  'contact.title': "You bring the idea, I'll bring the code.",
+  'contact.desc': 'Always ready to listen — and to actually understand',
   'contact.summary':
-    'Full Stack software engineer with 8+ years of experience designing and building web solutions across front-end and back-end technologies.',
+    'Software engineer with 3+ years of experience building and developing web solutions, focused on user interfaces, content management systems (CMS) and applying new technologies.',
   'contact.cta': "Let's work together",
+
+  // Footer
   'footer.brand': 'Code & design',
   'footer.tagline': 'Building projects. Sharing knowledge.',
 };
@@ -64,9 +83,9 @@ const META = {
     description: document.querySelector('meta[name="description"]')?.content ?? '',
   },
   en: {
-    title: 'Portfolio — Code & Design',
+    title: 'HieuTT — Code & Design',
     description:
-      'Front-end development, UI/UX and graphic design portfolio. Projects, skills, experience and contact details.',
+      'Portfolio covering CMS platform development, front-end development, UI/UX and graphic design. Browse projects, skills, experience and contact details.',
   },
 };
 

@@ -2,6 +2,7 @@ import '../css/main.css';
 import { initI18n } from './i18n.js';
 import { initStickyHeader, initMobileMenu, initScrollSpy } from './navigation.js';
 import { initReveal } from './animations.js';
+import { initBackToTop } from './back-to-top.js';
 
 function initProjectDialog() {
   const dialog = document.getElementById('project-dialog');
@@ -38,3 +39,4 @@ initScrollSpy();
 initReveal();
 initProjectDialog();
 initYear();
+initBackToTop();
